@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSAS ARENA AI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #090909;
+    color: white;
+}
+
+header {
+    background: #111;
+    padding: 25px 15px;
+    text-align: center;
+    border-bottom: 2px solid gold;
+}
+
+.logo {
+    color: gold;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.crown {
+    font-size: 35px;
+}
+
+header p {
+    color: #ddd;
+}
+
+nav {
+    background: #181818;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: gold;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 14px;
+}
+
+.hero {
+    text-align: center;
+    padding: 55px 20px;
+    background: linear-gradient(#171717, #090909);
+}
+
+.hero h1 {
+    color: gold;
+    font-size: 32px;
+}
+
+.hero p {
+    line-height: 1.7;
+    color: #ddd;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: #171717;
+    border: 1px solid #b89532;
+    border-radius: 12px;
+    padding: 22px;
+    margin: 25px 0;
+}
+
+h2 {
+    color: gold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    background: #292929;
+    color: white;
+    border: 1px solid #777;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 120px;
+}
+
+button {
+    background: gold;
+    color: black;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:hover {
+    background: #e6bd45;
+}
+
+.result {
+    background: #242424;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+footer {
+    background: #151515;
+    text-align: center;
+    padding: 25px;
+    color: gold;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="crown">👑</div>
+    <div class="logo">OSAS ARENA AI</div>
+    <p>Your World of Stories, Pictures and Movies</p>
+</header>
+
+<nav>
+    <a href="#story">Story Creator</a>
+    <a href="#character">Characters</a>
+    <a href="#image">Image Creator</a>
+    <a href="#video">Video Creator</a>
+</nav>
+
+<section class="hero">
+    <h1>Welcome to OSAS ARENA AI</h1>
+    <p>
+        Bring your imagination to life!
+        Write beautiful stories, create characters,
+        explore pictures and develop exciting movies.
+    </p>
+</section>
+
+<div class="container">
+
+<section class="card" id="story">
+    <h2>✍️ AI Story Creator</h2>
+
+    <p>Enter your story idea below.</p>
+
+    <select id="genre">
+        <option>Drama</option>
+        <option>Romance</option>
+        <option>Christian</option>
+        <option>Comedy</option>
+        <option>Adventure</option>
+        <option>Family</option>
+        <option>Mystery</option>
+    </select>
+
+    <textarea id="storyIdea"
+    placeholder="Write your story idea here..."></textarea>
+
+    <button onclick="createStory()">Create My Story</button>
+
+    <div class="result" id="storyResult">
+        Your story will appear here.
+    </div>
+
+    <button onclick="copyStory()">Copy Story</button>
+    <button onclick="downloadStory()">Download Story</button>
+</section>
+
+<section class="card" id="character">
+    <h2>🎭 Character Creator</h2>
+
+    <input id="characterName"
+    placeholder="Enter character name">
+
+    <textarea id="characterDescription"
+    placeholder="Describe your character's appearance and personality..."></textarea>
+
+    <button onclick="createCharacter()">Create Character Description</button>
+
+    <div class="result" id="characterResult">
+        Your character description will appear here.
+    </div>
+</section>
+
+<section class="card" id="image">
+    <h2>🖼️ AI Image Creator</h2>
+
+    <p>
+        Describe the picture you want to create.
+    </p>
+
+    <textarea id="imageIdea"
+    placeholder="Describe the image you imagine..."></textarea>
+
+    <button onclick="imageMessage()">Create Image</button>
+
+    <div class="result" id="imageResult">
+        Image generation will be connected here.
+    </div>
+</section>
+
+<section class="card" id="video">
+    <h2>🎬 AI Video Creator</h2>
+
+    <p>
+        Turn your imagination into exciting movie scenes.
+    </p>
+
+    <textarea id="videoIdea"
+    placeholder="Describe the video or movie you want to create..."></textarea>
+
+    <button onclick="videoMessage()">Create Video</button>
+
+    <div class="result" id="videoResult">
+        Video generation will be connected here.
+    </div>
+</section>
+
+<section class="card">
+    <h2>🌟 My Story Studio</h2>
+    <p>
+        Welcome to your creative space.
+        Your journey as a storyteller begins here.
+    </p>
+</section>
+
+</div>
+
+<footer>
+    <p>👑 OSAS ARENA AI</p>
+    <p>Created with love for creative minds.</p>
+    <p>Imagine. Create. Inspire.</p>
+</footer>
+
+<script>
+
+function createStory() {
+    let idea = document.getElementById("storyIdea").value;
+    let genre = document.getElementById("genre").value;
+
+    if (!idea.trim()) {
+        alert("Please enter your story idea.");
+        return;
+    }
+
+    let story =
+"TITLE: A NEW BEGINNING\n\n" +
+"GENRE: " + genre + "\n\n" +
+"STORY IDEA: " + idea + "\n\n" +
+"SCENE 1: THE BEGINNING\n" +
+"The story opens as our main character faces an unexpected situation.\n\n" +
+"SCENE 2: THE CHALLENGE\n" +
+"A difficult event changes everything. The character must make an important decision.\n\n" +
+"SCENE 3: THE TURNING POINT\n" +
+"An unexpected revelation changes the direction of the story.\n\n" +
+"SCENE 4: THE ENDING\n" +
+"The character discovers a new lesson and a new beginning.";
+
+    document.getElementById("storyResult").innerText = story;
+}
+
+function createCharacter() {
+    let name = document.getElementById("characterName").value;
+    let description = document.getElementById("characterDescription").value;
+
+    if (!name.trim() || !description.trim()) {
+        alert("Please enter the character's name and description.");
+        return;
+    }
+
+    document.getElementById("characterResult").innerText =
+    "CHARACTER: " + name + "\n\n" +
+    "DESCRIPTION: " + description;
+}
+
+function imageMessage() {
+    let idea = document.getElementById("imageIdea").value;
+
+    if (!idea.trim()) {
+        alert("Please describe your image first.");
+        return;
+    }
+
+    document.getElementById("imageResult").innerText =
+    "Your image idea has been prepared: " + idea +
+    "\n

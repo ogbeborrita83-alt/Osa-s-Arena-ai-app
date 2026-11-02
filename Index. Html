@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Osas Arena AI</title>
+<title>OSAS ARENA AI</title>
+
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -12,78 +17,221 @@ body {
     color: white;
     text-align: center;
 }
+
 header {
-    background: #252044;
-    padding: 25px;
+    background: linear-gradient(135deg, #252044, #49316b);
+    padding: 35px 15px;
+    border-bottom: 3px solid gold;
 }
+
 h1 {
     color: gold;
     font-size: 30px;
 }
-.container {
-    padding: 30px 15px;
+
+header p {
+    font-size: 16px;
 }
+
+.container {
+    padding: 20px 15px;
+}
+
 .box {
     background: #24243d;
-    padding: 20px;
+    padding: 22px;
     margin: 20px auto;
     border-radius: 15px;
-    max-width: 450px;
+    max-width: 500px;
+    box-shadow: 0 4px 15px #0005;
 }
+
+h2 {
+    color: gold;
+}
+
+textarea, select {
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    border: none;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+textarea {
+    height: 140px;
+}
+
 button {
     background: gold;
     color: black;
     border: none;
-    padding: 14px 22px;
+    padding: 13px 20px;
     border-radius: 8px;
     font-size: 16px;
-    margin: 8px;
+    font-weight: bold;
+    margin: 7px;
+    cursor: pointer;
 }
-textarea {
-    width: 90%;
-    height: 120px;
-    border-radius: 8px;
-    padding: 10px;
+
+button:hover {
+    background: orange;
 }
+
+#result {
+    background: #15152b;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    margin-top: 15px;
+}
+
 footer {
-    padding: 20px;
+    padding: 25px;
     color: #ccc;
 }
 </style>
 </head>
+
 <body>
 
 <header>
 <h1>👑 OSAS ARENA AI</h1>
-<p>Your imagination, your story, your movie!</p>
+<p>Your Imagination. Your Story. Your Movie!</p>
+<p>Welcome to the Home of Stories and Movies.</p>
 </header>
 
 <div class="container">
 
 <div class="box">
-<h2>🎬 Create Your AI Story</h2>
-<p>Write your own story and bring your imagination to life.</p>
-<textarea placeholder="Write your story here..."></textarea>
-<br>
-<button onclick="alert('Story creator coming soon!')">Create My Story</button>
+<h2>🎬 CREATE YOUR STORY</h2>
+
+<p>Write your idea and create a story.</p>
+
+<select id="genre">
+<option value="Drama">Drama</option>
+<option value="Romance">Romance</option>
+<option value="Christian">Christian Story</option>
+<option value="Comedy">Comedy</option>
+<option value="Adventure">Adventure</option>
+<option value="Family">Family Story</option>
+<option value="Mystery">Mystery</option>
+</select>
+
+<textarea id="storyIdea"
+placeholder="Write your story idea here..."></textarea>
+
+<button onclick="createStory()">Create My Story</button>
+
+<div id="result"></div>
+
+<button onclick="copyStory()">Copy Story</button>
+<button onclick="downloadStory()">Download Story</button>
+
 </div>
 
 <div class="box">
-<h2>🎥 AI Video Creator</h2>
-<p>Turn your creative ideas into amazing videos.</p>
-<button onclick="alert('AI video generator coming soon!')">Generate Video</button>
+<h2>🎥 AI VIDEO CREATOR</h2>
+<p>Turn your stories into exciting movies.</p>
+<button onclick="videoMessage()">Explore Video Creation</button>
 </div>
 
 <div class="box">
-<h2>📖 My Story Studio</h2>
-<p>Your home for creative stories and movies.</p>
+<h2>🖼️ AI IMAGE CREATOR</h2>
+<p>Create characters and pictures for your stories.</p>
+<button onclick="imageMessage()">Explore Image Creation</button>
+</div>
+
+<div class="box">
+<h2>📖 MY STORY STUDIO</h2>
+<p>Your home for creative stories, imagination and movies.</p>
 </div>
 
 </div>
 
 <footer>
-<p>Created with love by Osas Arena</p>
+<p>👑 OSAS ARENA AI</p>
+<p>Created with love by Osas Arena.</p>
 </footer>
+
+<script>
+
+function createStory() {
+
+    let idea = document.getElementById("storyIdea").value.trim();
+    let genre = document.getElementById("genre").value;
+
+    if (idea === "") {
+        alert("Please write your story idea first.");
+        return;
+    }
+
+    let story = "TITLE: " + genre.toUpperCase() + " STORY\n\n";
+
+    story += "SCENE 1\n\n";
+    story += "The story begins with " + idea + ".\n\n";
+
+    story += "SCENE 2\n\n";
+    story += "A new challenge appears. The characters must find the courage to face what is happening.\n\n";
+
+    story += "SCENE 3\n\n";
+    story += "An unexpected discovery changes everything. The truth begins to come out.\n\n";
+
+    story += "SCENE 4\n\n";
+    story += "The characters make an important decision. Their actions bring the story to a powerful conclusion.\n\n";
+
+    story += "THE END\n\n";
+    story += "Created with OSAS ARENA AI.";
+
+    document.getElementById("result").innerText = story;
+}
+
+function copyStory() {
+
+    let story = document.getElementById("result").innerText;
+
+    if (!story) {
+        alert("Create a story first.");
+        return;
+    }
+
+    navigator.clipboard.writeText(story)
+    .then(() => alert("Story copied successfully!"))
+    .catch(() => alert("Please select and copy your story manually."));
+}
+
+function downloadStory() {
+
+    let story = document.getElementById("result").innerText;
+
+    if (!story) {
+        alert("Create a story first.");
+        return;
+    }
+
+    let file = new Blob([story], {type: "text/plain"});
+    let link = document.createElement("a");
+
+    link.href = URL.createObjectURL(file);
+    link.download = "Osas-Arena-Story.txt";
+    link.click();
+
+    URL.revokeObjectURL(link.href);
+}
+
+function videoMessage() {
+    alert("AI Video Generation will be connected in our next development stage.");
+}
+
+function imageMessage() {
+    alert("AI Image Generation will be connected in our next development stage.");
+}
+
+</script>
 
 </body>
 </html>
+

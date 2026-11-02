@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osas Arena AI</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #101020;
+    color: white;
+    text-align: center;
+}
+header {
+    background: #252044;
+    padding: 25px;
+}
+h1 {
+    color: gold;
+    font-size: 30px;
+}
+.container {
+    padding: 30px 15px;
+}
+.box {
+    background: #24243d;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 15px;
+    max-width: 450px;
+}
+button {
+    background: gold;
+    color: black;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 8px;
+}
+textarea {
+    width: 90%;
+    height: 120px;
+    border-radius: 8px;
+    padding: 10px;
+}
+footer {
+    padding: 20px;
+    color: #ccc;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>👑 OSAS ARENA AI</h1>
+<p>Your imagination, your story, your movie!</p>
+</header>
+
+<div class="container">
+
+<div class="box">
+<h2>🎬 Create Your AI Story</h2>
+<p>Write your own story and bring your imagination to life.</p>
+<textarea placeholder="Write your story here..."></textarea>
+<br>
+<button onclick="alert('Story creator coming soon!')">Create My Story</button>
+</div>
+
+<div class="box">
+<h2>🎥 AI Video Creator</h2>
+<p>Turn your creative ideas into amazing videos.</p>
+<button onclick="alert('AI video generator coming soon!')">Generate Video</button>
+</div>
+
+<div class="box">
+<h2>📖 My Story Studio</h2>
+<p>Your home for creative stories and movies.</p>
+</div>
+
+</div>
+
+<footer>
+<p>Created with love by Osas Arena</p>
+</footer>
+
+</body>
+</html>
